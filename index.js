@@ -17,5 +17,5 @@ app.get('/',(req,res)=>{
     res.send("<h1>Raghu</h1>");
 })
 app.use('/api',routerUrl)
-const port = 4000
+const port = process.env.PORT || 4000
 app.listen(port,() => console.log("Running  "+port))
