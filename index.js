@@ -12,7 +12,7 @@ app.use('/',(req,res) => {
 })
 dotenv.config();
 //connection();
-mongoose.connect(process.env.DATABASE_ACCESS,()=>console.log("Connected to data base"))
+mongoose.connect("mongodb://raghuram:raghuram@cluster0-shard-00-00.ea1ef.mongodb.net:27017,cluster0-shard-00-01.ea1ef.mongodb.net:27017,cluster0-shard-00-02.ea1ef.mongodb.net:27017/cuvette?ssl=true&replicaSet=atlas-nc4cxy-shard-0&authSource=admin&retryWrites=true&w=majority",()=>console.log("Connected to data base"))
 app.get('/',(req,res)=>{
     res.send("<h1>Raghu</h1>");
 })

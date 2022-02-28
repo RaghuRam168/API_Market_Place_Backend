@@ -130,88 +130,8 @@ const deleteLogin = asyncHandler(async(req,res)=>{
   }
 })
 
-//remove image background
-
-// const removeBackground =asyncHandler(async(req,res) =>{
-// const { image }= req.body
-// const formData = new FormData
-// const inputPath = '/path/to/file.jpg';
-// formData.append('size', 'auto');
-// formData.append('image_file', fs.createReadStream(image));
-
-// axios({
-//   method: 'post',
-//   url: 'https://api.remove.bg/v1.0/removebg',
-//   data: formData,
-//   responseType: 'arraybuffer',
-//   headers: {
-//     ...formData.getHeaders(),
-//     'X-Api-Key': '4MGvPndi1tusznsUy1ggz6E2',
-//   },
-//   encoding: null
-// })
-// .then((response) => {
-//   if(response.status != 200) return console.error('Error:', response.status, response.statusText);
-//   fs.writeFileSync("no-bg.png", response.data);
-// })
-// .catch((error) => {
-//     return console.error('Request failed:', error);
-// });
-
-// })
-
-
-//copied
-
-
-const removeBackground =asyncHandler(async(req,res) =>{
-  const { image } = req.body;
-  console.log(image)
-  const imageData = image.substring(image.indexOf(",") + 1);
-  fs.writeFileSync("tmp.png", imageData, { encoding: null });
-
-  const inputPath = "tmp.png";
-  const formData = new FormData();
-  formData.append("size", "auto");
-  formData.append(
-    "image_file",
-    fs.createReadStream(inputPath),
-    path.basename(inputPath),
-  );
-
-  axios({
-    method: "post",
-    url: "https://api.remove.bg/v1.0/removebg",
-    data: formData,
-    responseType: "arraybuffer",
-    headers: {
-      ...formData.getHeaders(),
-      "X-Api-Key": '4MGvPndi1tusznsUy1ggz6E2',
-    },
-    encoding: null,
-  })
-    .then((response) => {
-      if (response.status != 200)
-        return console.error("Error:", response.status, response.statusText);
-
-      console.log("Success:", response.status, response.statusText);
-      return res.status(200).json({
-        message: "Image uploaded successfully",
-        image: response.data,
-      });
-      // fs.writeFileSync("../frontend/bg.png", response.data);
-    })
-    .catch((error) => {
-      return console.error("Request failed:", error);
-    });
-});
-
-
-
-
-
 //module.exports.signup=signup
-module.exports.removeBackground=removeBackground;
+
 module.exports.deleteLogin=deleteLogin;
 module.exports.registerUser = registerUser;
 module.exports.getUsers = getUsers;

@@ -49,7 +49,7 @@ const BgRemove = require('../controllers/BgRemoveController')
 router.route('/users').get(users.getUsers)
 //router.get('/:username',users.getSpecifiedUser);
 router.route('/specified-user/:username').get(users.getSpecifiedUser);
-router.post('/remove-background',users.removeBackground)
+
 //router.route('/signup').post(users.signup)
 router.route('/delete-login').delete(users.deleteLogin)
 router.route('/register').post(users.registerUser)

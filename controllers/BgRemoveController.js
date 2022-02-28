@@ -27,12 +27,12 @@ const BgRemove = (req,res)=>{
 
     axios({
       method: 'post',
-      url: process.env.BG_URL,
+      url: "https://api.remove.bg/v1.0/removebg",
       data: formData,
       responseType: 'arraybuffer',
       headers: {
         ...formData.getHeaders(),
-        'X-Api-Key': process.env.API_KEY,
+        'X-Api-Key': "4MGvPndi1tusznsUy1ggz6E2",
       },
       encoding: null
     })
